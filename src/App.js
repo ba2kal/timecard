@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TimeCard from "./component/TimeCard";
-require('../public/scss/mystyles.scss');
+import Router from "./Router";
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<TimeCard/>, rootElement);
+ReactDOM.render(<Router/>, rootElement);

@@ -47,6 +47,6 @@ module.exports = {
     devServer:{
         contentBase:'./public',
         host:'localhost',
-        port:8080
+        port:8000
     }
 }

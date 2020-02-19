@@ -1,16 +1,20 @@
 import React from "react";
-import { HashRouter, Route } from "react-router-dom";
-import Login from "./routes/Login";
+import { HashRouter, Route, BrowserRouter } from "react-router-dom";
+import SignUp from "./routes/SignUp";
+import Main from "./routes/Main";
 import Index from "./routes/Index";
-import Navigation from "./component/Navigation";
+import Footer from "./component/Footer";
+import Header from "./component/Header";
 
 function Router() {
   return (
-    <HashRouter>
-      <Navigation />
+    <BrowserRouter>
+      <Header/>
       <Route path="/" exact={true} component={Index} />
-      <Route path="/login" exact={true} component={Login} />
-    </HashRouter>
+      <Route path="/signUp" exact={true} component={SignUp} />
+      <Route path="/main" exact={true} component={Main} />
+      <Footer/>
+    </BrowserRouter>
   );
 }
 

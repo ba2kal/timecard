@@ -1,9 +1,10 @@
 import React from "react";
+import mainImg from "../../public/images/main-cat.jpg"
 
-function Main() {
+const Main = () => {
   return (
     <div>
-      <img src="../../public/main-cat.jpg"/>
+      <img src={mainImg}/>
     </div>
   );
 }

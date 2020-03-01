@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import ButtonComponent from "../component/index/Button";
+import IndexComponent from "../component/index";
 require("../../public/css/mystyles.scss");
 
-function Index() {
+export default function Index() {
   return (
     <div className="hero-body">
       <div className="columns is-centered">
@@ -29,10 +28,8 @@ function Index() {
           </p>
         </div>
       </div>
-      <ButtonComponent />
+      <IndexComponent />
       <br />
     </div>
   );
 }
-
-export default Index;

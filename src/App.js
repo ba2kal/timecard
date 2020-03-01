@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Router from "./Router";
-
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import buttonApp from "./reducers/Button";
+import reducer from "./reducers/Reducer";
 
-const store = createStore(buttonApp);
-
+const store = createStore(reducer);
+console.log("app:"+store.getState());
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
-    <Router />
+  <Router />
   </Provider>,
   rootElement
 );

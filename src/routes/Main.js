@@ -1,12 +1,11 @@
-import React from "react";
-import {Link} from  "react-router-dom"
-import MainComponent from "../component/Main"
+import React, { Component } from "react";
+import MainComponent from "../component/main/Main"
 require("../../public/css/mystyles.scss");
 
-function Main() {
-  return (
-    <MainComponent/>
-  );
+const Main = () => {
+    return (
+      <MainComponent/>
+    );
 }
 
 export default Main;

@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 STATICFILES_DIRS = [
-    "static/timeplates/static",
+    os.path.join(BASE_DIR, 'static/templates/static'),
 ]
 WSGI_APPLICATION = 'timeCard.wsgi.application'
 

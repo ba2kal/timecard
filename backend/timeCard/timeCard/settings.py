@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates',
+            'static/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 STATICFILES_DIRS = [
-    "templates/static",
+    "static/timeplates/static",
 ]
 WSGI_APPLICATION = 'timeCard.wsgi.application'
 

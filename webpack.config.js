@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/App.js',
     output: {
         path: path.resolve(__dirname, './backend/timeCard/static/templates'),
-        filename: 'js/App.js'
+        filename: 'static/js/App.js'
     },
     module:{
         rules:[
@@ -38,7 +38,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                   
-                  name: 'images/[name].[ext]?[hash]'
+                  name: 'static/images/[name].[ext]?[hash]'
                 }
               }
         ],
@@ -49,7 +49,7 @@ module.exports = {
           filename: 'index.html', 
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/mystyles.css'
+            filename: 'static/css/mystyles.css'
           })
     ],
     devServer:{

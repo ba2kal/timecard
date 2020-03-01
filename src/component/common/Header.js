@@ -32,7 +32,7 @@ const Header = props => {
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <Link to="/" className="navbar-item">
+          <Link to="/main" className="navbar-item">
             Home
           </Link>
 

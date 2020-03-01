@@ -5,6 +5,7 @@ require("../../public/css/mystyles.scss");
 export default function Index() {
   return (
     <div className="hero-body">
+      <form>
       <div className="columns is-centered">
         <div className="column is-4">
           <p className="control has-icons-left has-icons-right">
@@ -29,6 +30,7 @@ export default function Index() {
         </div>
       </div>
       <IndexComponent />
+      </form>
       <br />
     </div>
   );

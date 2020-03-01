@@ -3,10 +3,11 @@ import mainImg from "../../../public/images/main-cat.jpg"
 import { connect } from "react-redux";
 
 const Main = (props) => {
-  console.log(props.loginFlg);
   return (
+    <div className="columns is-centered">
     <div>
       <img src={mainImg}/>
+    </div>
     </div>
   );
 }

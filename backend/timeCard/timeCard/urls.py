@@ -25,5 +25,6 @@ router.register('test', TestViewSet)
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('^', TemplateView.as_view(template_name='index.html'), name='index'),
+    #url('^', TemplateView.as_view(template_name='index.html'), name='index'),
+    url('api/', include(router.urls)),
 ]

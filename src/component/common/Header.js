@@ -11,15 +11,19 @@ const Header = props => {
   }
 
   return (
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+    <nav
+      className="navbar is-dark is-transparent"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-brand">
         <Link to="/main" className="navbar-item">
           <h2>Sahara</h2>
         </Link>
 
         <a
           role="button"
-          class="navbar-burger burger"
+          className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -30,16 +34,16 @@ const Header = props => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-start">
           <Link to="/main" className="navbar-item">
             Home
           </Link>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">More</a>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <a className="navbar-link">More</a>
 
-            <div class="navbar-dropdown">
+            <div className="navbar-dropdown">
               <Link to="" className="navbar-item">
                 TimeCard
               </Link>
@@ -49,7 +53,7 @@ const Header = props => {
               <Link to="" className="navbar-item">
                 Recipe
               </Link>
-              <hr class="navbar-divider" />
+              <hr className="navbar-divider" />
               <Link to="" className="navbar-item">
                 Travel
               </Link>
@@ -57,10 +61,10 @@ const Header = props => {
           </div>
         </div>
 
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <Link to="/" class="button is-primary" onClick={logout}>
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="buttons">
+              <Link to="/" className="button is-primary" onClick={logout}>
                 <strong>Log Out</strong>
               </Link>
             </div>

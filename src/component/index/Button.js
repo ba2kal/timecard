@@ -8,7 +8,7 @@ const Button = (props) => {
     } = props;
 
     return (
-      <div className="columns is-multiline is-centered">
+      <div className="columns is-multiline is-centered is-mobile">
         <div className="column is-narrow">
         <Link to="/main">
             <button className="button is-success" onClick={login}>Login</button>

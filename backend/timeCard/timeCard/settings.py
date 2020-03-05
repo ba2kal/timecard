@@ -83,9 +83,13 @@ WSGI_APPLICATION = 'timeCard.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default': { 
+        'ENGINE': 'django.db.backends.mysql', # mysql 엔진 설정 
+        'NAME':'timecard', # 데이터베이스 이름 
+        'USER':'sahara', # 데이터베이스 연결시 사용할 유저 이름
+        'PASSWORD':'sahara1234', # 유저 패스워드
+        'HOST':'34.80.206.65',
+        'PORT':'3306'
     }
 }
 

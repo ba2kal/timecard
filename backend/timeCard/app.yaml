@@ -23,4 +23,4 @@ env_variables:
 # Replace project and instance with the values obtained  when configuring your
 # Cloud SQL instance.
 beta_settings:
-    Sahara-TimeCard: sahara-timecard-269007:asia-east1:sahara-timecard
+    sahara-timecard: sahara-timecard-269007:asia-east1:sahara-timecard

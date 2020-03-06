@@ -20,7 +20,3 @@ env_variables:
     SQLALCHEMY_DATABASE_URI: >-
       mysql+pymysql://USER:sahara@/timecard?unix_socket=/cloudsql/sahara-timecard-269007:asia-east1:sahara-timecard
 
-# Replace project and instance with the values obtained  when configuring your
-# Cloud SQL instance.
-beta_settings:
-    sahara-timecard: sahara-timecard-269007:asia-east1:sahara-timecard

@@ -1,6 +1,6 @@
 # [START django_app]
 runtime: python37
-entrypoint: gunicorn -b :$PORT timeCard:wsgi
+entrypoint: /home/kimdh4130/.local/bin/gunicorn -b :$PORT timeCard.wsgi
 
 handlers:
 # This configures Google App Engine to serve the files in the app's static

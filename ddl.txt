@@ -1,0 +1,128 @@
+--유저정보--
+CREATE TABLE "m_user_info" (
+  "user_name" varchar(30) NOT NULL,
+  "email_address" varchar(50) NOT NULL,
+  "password" varchar(20) NOT NULL,
+  "register_time" timestamp NOT NULL,
+  "creater" varchar(25) NULL,
+  "update_time" timestamp NOT NULL,
+  "updater" varchar(25) NULL,
+  CONSTRAINT muserinfo_pk PRIMARY KEY (email_address)
+);
+COMMENT ON TABLE "m_user_info" IS '유저정보';
+COMMENT ON COLUMN "m_user_info"."user_name" IS '유저이름';
+COMMENT ON COLUMN "m_user_info"."email_address" IS '이메일';
+COMMENT ON COLUMN "m_user_info"."password" IS '비밀번호';
+COMMENT ON COLUMN "m_user_info"."register_time" IS '정보등록일';
+COMMENT ON COLUMN "m_user_info"."creater" IS '정보등록자';
+COMMENT ON COLUMN "m_user_info"."update_time" IS '정보수정일';
+COMMENT ON COLUMN "m_user_info"."updater" IS '정보수정자';
+
+--부서정보--
+CREATE TABLE "m_dept_info" (
+  "dept_id" varchar(5) NOT NULL,
+  "dept_name" varchar(15) NOT NULL,
+  "dept_comment" varchar(100),
+  "dept_total_emp" smallint,
+  "register_time" timestamp NOT NULL,
+  "create_emp" varchar(25),
+  "update_time" timestamp NOT NULL,
+  "update_emp" varchar(25),
+  CONSTRAINT mDeptInfo_pk PRIMARY KEY ("dept_id")
+);
+COMMENT ON TABLE "m_dept_info" IS '부서정보';
+COMMENT ON COLUMN "m_dept_info"."dept_id" IS '부서ID';
+COMMENT ON COLUMN "m_dept_info"."dept_name" IS '부서명';
+COMMENT ON COLUMN "m_dept_info"."dept_comment" IS '부서설명';
+COMMENT ON COLUMN "m_dept_info"."dept_total_emp" IS '부서인원수';
+COMMENT ON COLUMN "m_dept_info"."register_time" IS '정보등록일';
+COMMENT ON COLUMN "m_dept_info"."create_emp" IS '정보등록자';
+COMMENT ON COLUMN "m_dept_info"."update_time" IS '정보수정일';
+COMMENT ON COLUMN "m_dept_info"."update_emp" IS '정보수정자';
+
+--사원정보--
+CREATE TABLE "m_emp_info" (
+  "emp_number" smallint NOT NULL,
+  "emp_first_name" varchar(10) NOT NULL,
+  "emp_given_name" varchar(15) NOT NULL,
+  "emp_age" smallint NOT NULL,
+  "emp_sex" smallint NOT NULL,
+  "emp_birthday" date NOT NULL,
+  "emp_dept_id" varchar(5),
+  "emp_position_code" smallint,
+  "emp_engineer_level" smallint,
+  "emp_tel" varchar(13),
+  "emp_postal_code" varchar(8),
+  "emp_addres" varchar(10),
+  "emp_join_date" date,
+  "emp_promotion_date" date,
+  "emp_salary_code" smallint,
+  "register_time" timestamp NOT NULL,
+  "create_emp" varchar(25),
+  "update_time" timestamp NOT NULL,
+  "update_emp" varchar(25),
+  CONSTRAINT mEmpInfo_pk PRIMARY KEY ("emp_number")
+);
+COMMENT ON TABLE "m_emp_info" IS '사원정보';
+COMMENT ON COLUMN "m_emp_info"."emp_number" IS '사원번호';
+COMMENT ON COLUMN "m_emp_info"."emp_first_name" IS '이름(성)';
+COMMENT ON COLUMN "m_emp_info"."emp_given_name" IS '이름(이름)';
+COMMENT ON COLUMN "m_emp_info"."emp_age" IS '사원나이';
+COMMENT ON COLUMN "m_emp_info"."emp_sex" IS '사원성별';
+COMMENT ON COLUMN "m_emp_info"."emp_birthday" IS '사원생일';
+COMMENT ON COLUMN "m_emp_info"."emp_dept_id" IS '부서ID';
+COMMENT ON COLUMN "m_emp_info"."emp_position_code" IS '사원직급코드';
+COMMENT ON COLUMN "m_emp_info"."emp_engineer_level" IS '엔지니어레벨';
+COMMENT ON COLUMN "m_emp_info"."emp_tel" IS '사원전화번호';
+COMMENT ON COLUMN "m_emp_info"."emp_postal_code" IS '사원우편번호';
+COMMENT ON COLUMN "m_emp_info"."emp_addres" IS '사원주소';
+COMMENT ON COLUMN "m_emp_info"."emp_join_date" IS '사원입사일';
+COMMENT ON COLUMN "m_emp_info"."emp_promotion_date" IS '사원진급일';
+COMMENT ON COLUMN "m_emp_info"."emp_salary_code" IS '사원연봉코드';
+COMMENT ON COLUMN "m_emp_info"."register_time" IS '정보등록일';
+COMMENT ON COLUMN "m_emp_info"."create_emp" IS '정보등록자';
+COMMENT ON COLUMN "m_emp_info"."update_time" IS '정보수정일';
+COMMENT ON COLUMN "m_emp_info"."update_emp" IS '정보수정자';
+
+--연봉정보--
+CREATE TABLE "m_salary_info" (
+  "salary_code" smallint NOT NULL,
+  "amount" integer DEFAULT NULL,
+  "base_pay" integer,
+  "hourly_pay" integer,
+  "register_time" timestamp NOT NULL,
+  "create_emp" varchar(25),
+  "update_time" timestamp NOT NULL,
+  "update_emp" varchar(25),
+  CONSTRAINT mSalaryInfo_pk PRIMARY KEY ("salary_code")
+);
+COMMENT ON TABLE "m_salary_info" IS '사원정보';
+COMMENT ON COLUMN "m_salary_info"."salary_code" IS '연봉코드';
+COMMENT ON COLUMN "m_salary_info"."amount" IS '연봉총액';
+COMMENT ON COLUMN "m_salary_info"."base_pay" IS '기본급';
+COMMENT ON COLUMN "m_salary_info"."hourly_pay" IS '시급';
+COMMENT ON COLUMN "m_salary_info"."register_time" IS '정보등록일';
+COMMENT ON COLUMN "m_salary_info"."create_emp" IS '정보등록자';
+COMMENT ON COLUMN "m_salary_info"."update_time" IS '정보수정일';
+COMMENT ON COLUMN "m_salary_info"."update_emp" IS '정보수정자';
+
+
+--코드정보--
+CREATE TABLE "m_code_info" (
+  "code_id" smallint NOT NULL,
+  "code_name" varchar(25) NOT NULL,
+  "code_value" varchar(50) NOT NULL,
+  "register_time" timestamp NOT NULL,
+  "create_emp" varchar(25),
+  "update_time" timestamp NOT NULL,
+  "update_emp" varchar(25),
+  CONSTRAINT mCodeInfo_pk PRIMARY KEY ("code_id","code_name")
+);
+COMMENT ON TABLE "m_code_info" IS '코드정보';
+COMMENT ON COLUMN "m_code_info"."code_id" IS '코드ID';
+COMMENT ON COLUMN "m_code_info"."code_name" IS '코드명';
+COMMENT ON COLUMN "m_code_info"."code_value" IS '코드내용';
+COMMENT ON COLUMN "m_code_info"."register_time" IS '정보등록일';
+COMMENT ON COLUMN "m_code_info"."create_emp" IS '정보등록자';
+COMMENT ON COLUMN "m_code_info"."update_time" IS '정보수정일';
+COMMENT ON COLUMN "m_code_info"."update_emp" IS '정보수정자';

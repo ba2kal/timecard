@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'timeCard.wsgi.application'
 DATABASES = {
     'default': { 
         'ENGINE': 'django.db.backends.postgresql', # mysql 엔진 설정 
-        'NAME':'timecard', # 데이터베이스 이름 
+        'NAME':'sahara', # 데이터베이스 이름 
         'USER':'saharacat', # 데이터베이스 연결시 사용할 유저 이름
         'PASSWORD':'sahara1234', # 유저 패스워드
         'HOST':'35.220.149.154',

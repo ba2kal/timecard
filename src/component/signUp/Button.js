@@ -8,7 +8,7 @@ const Button = props => {
     <div className="columns is-multiline is-centered is-mobile">
       <div className="column is-narrow">
         <Link to="/">
-          <button className="button is-success" onClick={signUp}>
+          <button type="submit" className="button is-success" onClick={signUp}>
             Submit
           </button>
         </Link>

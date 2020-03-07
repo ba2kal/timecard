@@ -1,6 +1,6 @@
 # [START django_app]
 runtime: python37
-entrypoint: gunicorn -b :$PORT timeCard.wsgi
+entrypoint: gunicorn -b :$PORT timeCard:wsgi
 
 handlers:
 # This configures Google App Engine to serve the files in the app's static
@@ -18,5 +18,5 @@ env_variables:
     # Replace user, password, database, and instance connection name with the values obtained
     # when configuring your Cloud SQL instance.
     SQLALCHEMY_DATABASE_URI: >-
-      mysql+pymysql://USER:sahara@/timecard?unix_socket=/cloudsql/sahara-timecard-269007:asia-east1:sahara-timecard
+      postgres+pg8000://USER:saharacat@/sahara?unix_socket=/cloudsql/sahara-cat:asia-east2:sahara-cat
 

@@ -20,8 +20,11 @@ export default function SignUp() {
         email_address: data.email_address,
         password: data.password
       }
+    }).then(response => {
+      if (response.status === 200) {
+        location.href = '/'
+      }
     });
-    location.href = '/'
   }
 
   return (

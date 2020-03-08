@@ -6,7 +6,7 @@ require("../../public/css/mystyles.scss");
 export default function SignUp() {
   return (
     <div className="hero-body">
-      <form>
+      <form >
         <div className="columns is-centered">
           <div className="column is-4">
             <label className="label">UserName</label>

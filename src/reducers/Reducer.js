@@ -34,7 +34,6 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log("action:" + action.type);
   switch (action.type) {
     case LOGIN:
       return logInDo(state);

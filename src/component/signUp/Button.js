@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Button = props => {
   const { loginFlg, signUp, cancel } = props;
@@ -7,18 +6,14 @@ const Button = props => {
   return (
     <div className="columns is-multiline is-centered is-mobile">
       <div className="column is-narrow">
-        <Link to="/">
-          <button type="submit" className="button is-success" onClick={signUp}>
+          <button type="submit" className="button is-success">
             Submit
           </button>
-        </Link>
       </div>
       <div className="column is-narrow">
-        <Link to="/">
-          <button className="button is-primary" onClick={cancel}>
+          <button type="button" className="button is-primary" onClick={cancel}>
             Cancel
           </button>
-        </Link>
       </div>
     </div>
   );

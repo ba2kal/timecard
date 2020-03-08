@@ -1,8 +1,10 @@
 import React from "react";
 import IndexComponent from "../component/index";
+import { useForm } from "react-hook-form";
 require("../../public/css/mystyles.scss");
 
 export default function Index() {
+  const {id, password} = useForm();
   return (
     <div className="hero-body">
       <form>

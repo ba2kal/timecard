@@ -57,7 +57,7 @@ const Header = props => {
             <a className="navbar-link">More</a>
 
             <div className="navbar-dropdown">
-              <Link to="" className="navbar-item">
+              <Link to="/timeCard" className="navbar-item">
                 TimeCard
               </Link>
               <Link to="" className="navbar-item">

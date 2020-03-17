@@ -4,6 +4,8 @@ import Button from "../component/signUp";
 import axios from "axios";
 require("../../public/css/mystyles.scss");
 
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
 export default function SignUp() {
   const {
     register,
@@ -23,7 +25,9 @@ export default function SignUp() {
     }).then(response => {
       if (response.status === 200) {
         location.href = '/'
-      }
+      } 
+    }).catch(response => {
+        location.href = '/error'
     });
   }
 

@@ -21,5 +21,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url('saharaApi/', include('saharaApi.urls')),
+    url('^(main)|(error)|(signUp)/', TemplateView.as_view(template_name='index.html'), name='route'),
+    url('^saharaApi/', include('saharaApi.urls')),
 ]

@@ -6,36 +6,116 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-# Unable to inspect table 'auth_group'
-# The error was: permission denied for table auth_group
 
-# Unable to inspect table 'auth_group_permissions'
-# The error was: permission denied for table auth_group_permissions
 
-# Unable to inspect table 'auth_permission'
-# The error was: permission denied for table auth_permission
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=150)
 
-# Unable to inspect table 'auth_user'
-# The error was: permission denied for table auth_user
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
 
-# Unable to inspect table 'auth_user_groups'
-# The error was: permission denied for table auth_user_groups
 
-# Unable to inspect table 'auth_user_user_permissions'
-# The error was: permission denied for table auth_user_user_permissions
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
-# Unable to inspect table 'django_admin_log'
-# The error was: permission denied for table django_admin_log
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
 
-# Unable to inspect table 'django_content_type'
-# The error was: permission denied for table django_content_type
 
-# Unable to inspect table 'django_migrations'
-# The error was: permission denied for table django_migrations
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
 
-# Unable to inspect table 'django_session'
-# The error was: permission denied for table django_session
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
 
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.BooleanField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.SmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
 
 
 class MCodeInfo(models.Model):
@@ -113,9 +193,9 @@ class MUserInfo(models.Model):
     user_name = models.CharField(max_length=30)
     email_address = models.CharField(primary_key=True, max_length=50)
     password = models.CharField(max_length=20)
-    register_time = models.DateTimeField(auto_now_add=True)
+    register_time = models.DateTimeField()
     creater = models.CharField(max_length=25, blank=True, null=True)
-    update_time = models.DateTimeField(auto_now_add=True)
+    update_time = models.DateTimeField()
     updater = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
@@ -123,10 +203,18 @@ class MUserInfo(models.Model):
         db_table = 'm_user_info'
 
 
-class TestreactTestTbl(models.Model):
-    password = models.CharField(max_length=20)
-    name = models.CharField(max_length=20)
+class TWorkTime(models.Model):
+    user_email_address = models.CharField(primary_key=True, max_length=50)
+    work_type = models.SmallIntegerField()
+    work_date = models.CharField(max_length=10)
+    work_start_time = models.CharField(max_length=5)
+    work_end_time = models.CharField(max_length=5)
+    register_time = models.DateTimeField()
+    create_emp = models.CharField(max_length=25, blank=True, null=True)
+    update_time = models.DateTimeField()
+    update_emp = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'testReact_test_tbl'
+        db_table = 't_work_time'
+        unique_together = (('user_email_address', 'work_date'),)

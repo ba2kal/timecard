@@ -20,3 +20,8 @@ class workTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TWorkTime
         fields = ('work_date', 'work_start_time', 'work_end_time')
+
+class workTimeCreate(serializers.ModelSerializer):
+    class Meta:
+        model = TWorkTime
+        fields = ('user_email_address', 'work_type', 'work_date', 'work_start_time', 'work_end_time', 'create_emp', 'update_emp')

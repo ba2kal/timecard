@@ -1,11 +1,10 @@
 from rest_framework.response import Response
-from django.http import JsonResponse, HttpResponse
-from .serializers import userSerializer, userInfoCreate, workTimeSerializer
+from .serializers import userSerializer, userInfoCreate, workTimeSerializer, workTimeCreate
 from .models import MUserInfo, TWorkTime
 from rest_framework.generics import CreateAPIView, ListAPIView
+from django.http import JsonResponse
 from rest_framework.renderers import JSONRenderer
 import json
-from django.core.serializers.json import DjangoJSONEncoder
 
 class userInfoList(ListAPIView):
     queryset = MUserInfo.objects.all()
@@ -14,22 +13,39 @@ class userInfoList(ListAPIView):
 class timeCardList(ListAPIView):
     queryset = TWorkTime.objects.all()
     serializer_class = workTimeSerializer
-    def get_object(self):
+    def get(self, request):
         queryset = super().get_queryset()
-        serializer_class = self.get_serializer_class()
         userEmail = self.request.query_params.get('userEmail')
         queryset = queryset.filter(user_email_address=userEmail)
         resultList = []
-        for i in queryset:
-            result = timeCardListToJson(title=i.work_start_time+'~'+i.work_end_time, event=i.work_date)
-            jsonData = json.dumps(result.__dict__)
-            resultList.append(jsonData)
+        if len(queryset) != 0:
+            for i in queryset:
+                resultDic = timeInfoToDic(title=i.work_start_time+'~'+i.work_end_time, date=i.work_date).__dict__
+                resultList.append(resultDic)
         return JsonResponse(resultList, safe=False)
 
-class timeCardListToJson(object):
-    def __init__(self, title: str, event: str):
+class timeCardPost(CreateAPIView):
+    queryset = TWorkTime.objects.all()
+    serializer_class = workTimeCreate
+    def post(self, request):
+        queryset = self.get_queryset()
+        serializer_class = self.get_serializer_class()
+        serializer = serializer_class(data=request.data)
+        if serializer.is_valid():
+            self.create(request=request)
+            resultList = []
+            startTime = serializer.data['work_start_time']
+            endTime = serializer.data['work_end_time']
+            workDate = serializer.data['work_date']
+            resultDic = timeInfoToDic(title=startTime+'~'+endTime, date=workDate).__dict__
+            resultList.append(resultDic)
+            return JsonResponse(resultList, safe=False)
+        return Response(serializer.errors, status="400")
+
+class timeInfoToDic(object):
+    def __init__(self, title: str, date: str):
         self.title = title
-        self.event = event
+        self.date = date
 
 class userInfoPost(CreateAPIView):
     queryset = MUserInfo.objects.all()

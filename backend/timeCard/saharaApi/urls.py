@@ -8,4 +8,5 @@ urlpatterns = [
     url('^userInfo/create/$', views.userInfoPost.as_view(), name = 'userInfoPost'),
     url('^userInfo/list/$', views.userInfoList.as_view(), name = 'userInfoList'),
     url('^workTime/list/$', views.timeCardList.as_view(), name = 'timeCardList'),
+    url('^workTime/create/$', views.timeCardPost.as_view(), name = 'timeCardPost'),
 ]

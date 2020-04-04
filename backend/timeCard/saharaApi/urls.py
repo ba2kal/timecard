@@ -9,4 +9,5 @@ urlpatterns = [
     url('^userInfo/list/$', views.userInfoList.as_view(), name = 'userInfoList'),
     url('^workTime/list/$', views.timeCardList.as_view(), name = 'timeCardList'),
     url('^workTime/create/$', views.timeCardPost.as_view(), name = 'timeCardPost'),
+    url('^workTime/delete/$', views.timeCardDelete.as_view(), name = 'timeCardDelete'),
 ]

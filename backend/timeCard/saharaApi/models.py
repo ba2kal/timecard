@@ -93,7 +93,8 @@ class MUserInfo(models.Model):
 
 
 class TWorkTime(models.Model):
-    user_email_address = models.CharField(primary_key=True, max_length=50)
+    work_time_id = models.CharField(primary_key=True, max_length=60)
+    user_email_address = models.CharField(max_length=50)
     work_type = models.SmallIntegerField()
     work_date = models.CharField(max_length=10)
     work_start_time = models.CharField(max_length=5)
@@ -106,5 +107,4 @@ class TWorkTime(models.Model):
     class Meta:
         managed = False
         db_table = 't_work_time'
-        unique_together = (('user_email_address', 'work_date'),)
         

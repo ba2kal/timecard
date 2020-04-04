@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Error() {
   return (
@@ -8,7 +9,9 @@ export default function Error() {
       <h3 class="title is-3">Bad Request</h3>
     </div>
     <div class="buttons">
-    <button class="button is-primary">Primary</button>
+    <Link to="/main">
+      <button class="button is-primary">Home</button>
+    </Link>
   </div>
   </div>
   );

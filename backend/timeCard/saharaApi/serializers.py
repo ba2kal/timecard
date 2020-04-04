@@ -24,4 +24,9 @@ class workTimeSerializer(serializers.ModelSerializer):
 class workTimeCreate(serializers.ModelSerializer):
     class Meta:
         model = TWorkTime
-        fields = ('user_email_address', 'work_type', 'work_date', 'work_start_time', 'work_end_time', 'create_emp', 'update_emp')
+        fields = ('work_time_id', 'user_email_address', 'work_type', 'work_date', 'work_start_time', 'work_end_time', 'create_emp', 'update_emp')
+
+class workTimeDelete(serializers.ModelSerializer):
+    class Meta:
+        model = TWorkTime
+        fields = ('work_time_id', 'work_date', 'work_start_time', 'work_end_time')

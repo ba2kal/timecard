@@ -24,6 +24,7 @@ const TimeCard = props => {
         console.log(result);
         setWorkTimeList([{ title: " ", date: " " }]);
       } else {
+        console.log(result.data);
         setWorkTimeList(result.data);
       }
     };
@@ -53,6 +54,29 @@ const TimeCard = props => {
     });
   };
 
+  const onDelete = data => {
+    console.log(data)
+    axios({
+      url: "saharaApi/workTime/delete/",
+      method: "delete",
+      data: {
+        work_time_id: "kimdh4130@gmail.com"+data.workDate,
+        user_email_address: "kimdh4130@gmail.com"
+      }
+    }).then(response => {
+      if (response.status === 200 || response.status === 201) {
+        rootEl.classList.remove("is-clipped");
+        $modals.forEach(function($el) {
+          $el.classList.remove("is-active");
+        });
+        setWorkTimeList(response.data);
+      }
+    })
+    .catch(response => {
+      location.href = "/error";
+    });
+  }
+
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = data => {
@@ -60,6 +84,7 @@ const TimeCard = props => {
       url: "saharaApi/workTime/create/",
       method: "post",
       data: {
+        work_time_id: "kimdh4130@gmail.com"+data.workDate,
         user_email_address: "kimdh4130@gmail.com",
         work_type: 0,
         work_date: data.workDate,
@@ -68,10 +93,7 @@ const TimeCard = props => {
       }
     })
       .then(response => {
-        console.log(response);
-        if (response.status === 200) {
-          console.log(rootEl)
-          console.log($modals)
+        if (response.status === 200 || response.status === 201) {
           rootEl.classList.remove("is-clipped");
           $modals.forEach(function($el) {
             $el.classList.remove("is-active");
@@ -199,6 +221,11 @@ const TimeCard = props => {
                 <div className="control">
                   <button type="submit" className="button is-link">
                     Submit
+                  </button>
+                </div>
+                <div className="control">
+                  <button type="submit" className="button is-link" onClick={handleSubmit(onDelete)}>
+                    Delete
                   </button>
                 </div>
                 <div className="control">
